@@ -11,7 +11,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var FoodListComponent = (function () {
     function FoodListComponent() {
+        this.clickSender = new core_1.EventEmitter();
+        this.filterByCalorieContent = "allFoods";
     }
+    FoodListComponent.prototype.onChange = function (optionFromMenu) {
+        this.filterByCalorieContent = optionFromMenu;
+    };
+    FoodListComponent.prototype.foodHasBeenClicked = function (clickedFood) {
+        this.clickSender.emit(clickedFood);
+    };
     return FoodListComponent;
 }());
 __decorate([
@@ -21,7 +29,7 @@ __decorate([
 __decorate([
     core_1.Output(),
     __metadata("design:type", Object)
-], FoodListComponent.prototype, "", void 0);
+], FoodListComponent.prototype, "clickSender", void 0);
 FoodListComponent = __decorate([
     core_1.Component({
         selector: 'food-list',
