@@ -9,10 +9,11 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
     <option value="highCalorieFoods">High Calorie Foods</option>
     <option value="lowCalorieFoods">Low Calorie Foods</option>
   </select>
-  <ul class="list-group">
-   <li class="list-group-item justify-content-between" (click)="foodHasBeenClicked(currentFood)" *ngFor="let currentFood of childFoodList | calorieContent:filterByCalorieContent">{{currentFood.name}} {{currentFood.details}}  <span class="badge badge-default badge-pill">{{currentFood.calories}}</span>
-   </li>
-  </ul>
+  <div class="collection with-header">
+    <h4 *ngIf="childFoodList.length" class="collection-header">Click on a Food to Edit</h4>
+    <a href="#!" class="collection-item" (click)="foodHasBeenClicked(currentFood)" *ngFor="let currentFood of childFoodList | calorieContent:filterByCalorieContent">{{currentFood.name}} {{currentFood.details}}  <span class="new badge" data-badge-caption="Calories">{{currentFood.calories}}</span>
+    </a>
+  </div>
   `
 })
 

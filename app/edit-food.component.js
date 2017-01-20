@@ -28,7 +28,7 @@ var EditFoodComponent = (function () {
     EditFoodComponent = __decorate([
         core_1.Component({
             selector: 'edit-food',
-            template: "\n  <form class=\"form-inline\" *ngIf=\"childSelectedFood\">\n    <h3>Edit Food Item Below</h3>\n    <label>Name:</label>\n    <input class=\"form-control\" [(ngModel)]=\"childSelectedFood.name\">\n    <label>Details:</label>\n    <input class=\"form-control\" [(ngModel)]=\"childSelectedFood.details\">\n    <label>Calories:</label>\n    <input class=\"form-control\" [(ngModel)]=\"childSelectedFood.calories\" type=\"number\">\n    <br>\n    <button (click)=\"doneButtonClicked()\">Done</button>\n  </form>\n  "
+            template: "\n  <div class=\"form-inline\" *ngIf=\"childSelectedFood\">\n    <p>Edit Food Item Below</p>\n    <div class=\"input-field\">\n      <label>Name:</label>\n      <input class=\"form-control\" [(ngModel)]=\"childSelectedFood.name\">\n    </div>\n    <div class=\"input-field\">\n      <label>Details:</label>\n      <input class=\"form-control\" [(ngModel)]=\"childSelectedFood.details\">\n    <div class=\"input-field\">\n      <label>Calories:</label>\n      <input class=\"form-control\" [(ngModel)]=\"childSelectedFood.calories\" type=\"number\">\n    </div>\n    <br>\n    <button class=\"btn btn-primary form-control\" (click)=\"doneButtonClicked()\">Done</button>\n  </div>\n  "
         }), 
         __metadata('design:paramtypes', [])
     ], EditFoodComponent);

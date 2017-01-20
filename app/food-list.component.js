@@ -31,7 +31,7 @@ var FoodListComponent = (function () {
     FoodListComponent = __decorate([
         core_1.Component({
             selector: 'food-list',
-            template: "\n  <select (change)=\"onChange($event.target.value)\">\n    <option value=\"allFoods\">All Foods</option>\n    <option value=\"highCalorieFoods\">High Calorie Foods</option>\n    <option value=\"lowCalorieFoods\">Low Calorie Foods</option>\n  </select>\n  <ul class=\"list-group\">\n   <li class=\"list-group-item justify-content-between\" (click)=\"foodHasBeenClicked(currentFood)\" *ngFor=\"let currentFood of childFoodList | calorieContent:filterByCalorieContent\">{{currentFood.name}} {{currentFood.details}}  <span class=\"badge badge-default badge-pill\">{{currentFood.calories}}</span>\n   </li>\n  </ul>\n  "
+            template: "\n  <select (change)=\"onChange($event.target.value)\">\n    <option value=\"allFoods\">All Foods</option>\n    <option value=\"highCalorieFoods\">High Calorie Foods</option>\n    <option value=\"lowCalorieFoods\">Low Calorie Foods</option>\n  </select>\n  <div class=\"collection with-header\">\n    <h4 *ngIf=\"childFoodList.length\" class=\"collection-header\">Click on a Food to Edit</h4>\n    <a href=\"#!\" class=\"collection-item\" (click)=\"foodHasBeenClicked(currentFood)\" *ngFor=\"let currentFood of childFoodList | calorieContent:filterByCalorieContent\">{{currentFood.name}} {{currentFood.details}}  <span class=\"new badge\" data-badge-caption=\"Calories\">{{currentFood.calories}}</span>\n    </a>\n  </div>\n  "
         }), 
         __metadata('design:paramtypes', [])
     ], FoodListComponent);

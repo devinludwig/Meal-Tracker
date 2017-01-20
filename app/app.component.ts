@@ -8,7 +8,6 @@ import { Food } from './food.model';
     <h1>Calorie Conductor</h1>
     <h3>Your Diet Assistant</h3>
     <food-list [childFoodList]="masterFoodList" (clickSender)="editFood($event)"></food-list>
-    <hr>
     <edit-food [childSelectedFood]="selectedFood" (doneButtonClickedSender)="finishedEditing()"></edit-food>
     <new-food (newFoodSender)="addFood($event)"></new-food>
   </div>
