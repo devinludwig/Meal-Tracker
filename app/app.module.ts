@@ -9,7 +9,8 @@ import { NewFoodComponent } from './new-food.component';
 
 
 @NgModule({
-  imports: [ BrowserModule ],
+  imports: [ BrowserModule,
+              FormsModule ],
   declarations: [ AppComponent,
                   FoodListComponent,
                   EditFoodComponent,

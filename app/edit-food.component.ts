@@ -14,7 +14,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
     <input class="form-control" [(ngModel)]="childSelectedFood.calories" type="number">
     <br>
     <button (click)="doneButtonClicked()">Done</button>
-  </div>
+  </form>
   `
 })
 
