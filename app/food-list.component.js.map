@@ -1,1 +1,1 @@
-{"version":3,"file":"food-list.component.js","sourceRoot":"","sources":["food-list.component.ts"],"names":[],"mappings":";AAgBE"}
+{"version":3,"file":"food-list.component.js","sourceRoot":"","sources":["food-list.component.ts"],"names":[],"mappings":";;;;;;;;;;AACA,sCAAuE;AAiBvE,IAAa,iBAAiB;IAA9B;IAGA,CAAC;IAAD,wBAAC;AAAD,CAAC,AAHD,IAGC;AAFU;IAAR,YAAK,EAAE;;wDAAuB;AAEjC;IADG,aAAM,EAAE;;2CAAA;AAFE,iBAAiB;IAf7B,gBAAS,CAAC;QACT,QAAQ,EAAE,WAAW;QACrB,QAAQ,EAAE,0mBAUT;KACF,CAAC;GAEW,iBAAiB,CAG7B;AAHY,8CAAiB"}
