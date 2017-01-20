@@ -4,21 +4,21 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'edit-food',
   template: `
-  <div class="form-inline" *ngIf="childSelectedFood">
-    <p>Edit Food Item Below</p>
+  <div class="well" *ngIf="childSelectedFood">
+    <h5>Edit {{childSelectedFood.name}} Below</h5>
     <div class="input-field">
-      <label>Name:</label>
-      <input class="form-control" [(ngModel)]="childSelectedFood.name">
+      <input type="text" [(ngModel)]="childSelectedFood.name">
+      <label class="active">Name:</label>
     </div>
     <div class="input-field">
-      <label>Details:</label>
-      <input class="form-control" [(ngModel)]="childSelectedFood.details">
+      <input type="text" [(ngModel)]="childSelectedFood.details">
+      <label class="active">Details:</label>
     <div class="input-field">
-      <label>Calories:</label>
-      <input class="form-control" [(ngModel)]="childSelectedFood.calories" type="number">
+      <input [(ngModel)]="childSelectedFood.calories" type="number">
+      <label class="active">Calories:</label>
     </div>
     <br>
-    <button class="btn btn-primary form-control" (click)="doneButtonClicked()">Done</button>
+    <button class="btn waves-effect waves-light" (click)="doneButtonClicked(childSelectedFood)">Done</button>
   </div>
   `
 })
@@ -27,7 +27,8 @@ export class EditFoodComponent {
   @Input() childSelectedFood: Food;
   @Output() doneButtonClickedSender = new EventEmitter();
 
-  doneButtonClicked() {
+  doneButtonClicked(foodItem: Food) {
     this.doneButtonClickedSender.emit();
+    foodItem.isBeingEdited = false;
   }
 }

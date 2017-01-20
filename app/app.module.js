@@ -27,7 +27,8 @@ var AppModule = (function () {
                 food_list_component_1.FoodListComponent,
                 edit_food_component_1.EditFoodComponent,
                 new_food_component_1.NewFoodComponent,
-                calorie_content_pipe_1.CalorieContentPipe],
+                calorie_content_pipe_1.CalorieContentPipe,
+            ],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])

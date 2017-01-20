@@ -4,6 +4,8 @@ var Food = (function () {
         this.name = name;
         this.details = details;
         this.calories = calories;
+        this.isBeingEdited = false;
+        this.timeStamp = new Date;
     }
     return Food;
 }());

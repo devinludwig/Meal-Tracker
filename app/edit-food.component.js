@@ -14,8 +14,9 @@ var EditFoodComponent = (function () {
     function EditFoodComponent() {
         this.doneButtonClickedSender = new core_1.EventEmitter();
     }
-    EditFoodComponent.prototype.doneButtonClicked = function () {
+    EditFoodComponent.prototype.doneButtonClicked = function (foodItem) {
         this.doneButtonClickedSender.emit();
+        foodItem.isBeingEdited = false;
     };
     __decorate([
         core_1.Input(), 
@@ -28,7 +29,7 @@ var EditFoodComponent = (function () {
     EditFoodComponent = __decorate([
         core_1.Component({
             selector: 'edit-food',
-            template: "\n  <div class=\"form-inline\" *ngIf=\"childSelectedFood\">\n    <p>Edit Food Item Below</p>\n    <div class=\"input-field\">\n      <label>Name:</label>\n      <input class=\"form-control\" [(ngModel)]=\"childSelectedFood.name\">\n    </div>\n    <div class=\"input-field\">\n      <label>Details:</label>\n      <input class=\"form-control\" [(ngModel)]=\"childSelectedFood.details\">\n    <div class=\"input-field\">\n      <label>Calories:</label>\n      <input class=\"form-control\" [(ngModel)]=\"childSelectedFood.calories\" type=\"number\">\n    </div>\n    <br>\n    <button class=\"btn btn-primary form-control\" (click)=\"doneButtonClicked()\">Done</button>\n  </div>\n  "
+            template: "\n  <div class=\"well\" *ngIf=\"childSelectedFood\">\n    <h5>Edit {{childSelectedFood.name}} Below</h5>\n    <div class=\"input-field\">\n      <input type=\"text\" [(ngModel)]=\"childSelectedFood.name\">\n      <label class=\"active\">Name:</label>\n    </div>\n    <div class=\"input-field\">\n      <input type=\"text\" [(ngModel)]=\"childSelectedFood.details\">\n      <label class=\"active\">Details:</label>\n    <div class=\"input-field\">\n      <input [(ngModel)]=\"childSelectedFood.calories\" type=\"number\">\n      <label class=\"active\">Calories:</label>\n    </div>\n    <br>\n    <button class=\"btn waves-effect waves-light\" (click)=\"doneButtonClicked(childSelectedFood)\">Done</button>\n  </div>\n  "
         }), 
         __metadata('design:paramtypes', [])
     ], EditFoodComponent);

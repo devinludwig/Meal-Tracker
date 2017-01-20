@@ -15,7 +15,8 @@ import { NewFoodComponent } from './new-food.component';
                   FoodListComponent,
                   EditFoodComponent,
                   NewFoodComponent,
-                  CalorieContentPipe ],
+                  CalorieContentPipe,
+                  ],
   bootstrap: [ AppComponent ]
 })
 
