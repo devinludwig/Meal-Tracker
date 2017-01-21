@@ -11,10 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var AppComponent = (function () {
     function AppComponent() {
-        this.currentTime = new Date;
-        this.month = this.currentTime.getMonth() + 1;
-        this.day = this.currentTime.getDate();
-        this.year = this.currentTime.getFullYear();
         this.selectedFood = null;
         this.masterFoodList = [];
     }
@@ -27,10 +23,14 @@ var AppComponent = (function () {
     AppComponent.prototype.finishedEditing = function () {
         this.selectedFood = null;
     };
+    AppComponent.prototype.delete = function (foodItem) {
+        this.masterFoodList.splice(this.masterFoodList.indexOf(foodItem), 1);
+        this.selectedFood = null;
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'app-root',
-            template: "\n  <div class=\"container\">\n    <nav>\n    <div class=\"nav-wrapper z-depth-5\">\n      <p class=\"brand-logo left\">Calorie Conductor</p>\n      <h5 class=\"right\">Your Diet Assistant</h5>\n    </div>\n    </nav>\n    <food-list [childFoodList]=\"masterFoodList\" (clickSender)=\"editFood($event)\"></food-list>\n    <edit-food [childSelectedFood]=\"selectedFood\" (doneButtonClickedSender)=\"finishedEditing()\"></edit-food>\n    <new-food [childSelectedFood]=\"selectedFood\" (newFoodSender)=\"addFood($event)\"></new-food>\n  </div>\n  "
+            template: "\n  <div class=\"container\">\n    <nav>\n    <div class=\"nav-wrapper z-depth-5\">\n      <p class=\"brand-logo left\">Calorie Conductor</p>\n      <h5 class=\"right\">Your Diet Assistant</h5>\n    </div>\n    </nav>\n    <food-list [childFoodList]=\"masterFoodList\" (clickSender)=\"editFood($event)\"></food-list>\n    <edit-food [childSelectedFood]=\"selectedFood\" (doneButtonClickedSender)=\"finishedEditing()\" (deleteSender)=\"delete(selectedFood)\"></edit-food>\n    <new-food [childSelectedFood]=\"selectedFood\" (newFoodSender)=\"addFood($event)\"></new-food>\n  </div>\n  "
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);

@@ -5,7 +5,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   selector: 'edit-food',
   template: `
   <div class="well" *ngIf="childSelectedFood">
-    <h5>Edit {{childSelectedFood.name}} Below</h5>
+    <h5>Edit "{{childSelectedFood.name}}"</h5>
     <div class="input-field">
       <input type="text" [(ngModel)]="childSelectedFood.name">
       <label class="active">Name:</label>
@@ -19,6 +19,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
     </div>
     <br>
     <button class="btn waves-effect waves-light" (click)="doneButtonClicked(childSelectedFood)">Done</button>
+    <button class="btn waves-effect waves-light" (click)="deleteButtonClicked(childSelectedFood)">Remove</button>
   </div>
   `
 })
@@ -26,9 +27,14 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class EditFoodComponent {
   @Input() childSelectedFood: Food;
   @Output() doneButtonClickedSender = new EventEmitter();
+  @Output() deleteSender = new EventEmitter();
 
   doneButtonClicked(foodItem: Food) {
     this.doneButtonClickedSender.emit();
     foodItem.isBeingEdited = false;
+  }
+
+  deleteButtonClicked(foodItem: Food) {
+    this.deleteSender.emit();
   }
 }

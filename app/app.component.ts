@@ -12,22 +12,17 @@ import { Food } from './food.model';
     </div>
     </nav>
     <food-list [childFoodList]="masterFoodList" (clickSender)="editFood($event)"></food-list>
-    <edit-food [childSelectedFood]="selectedFood" (doneButtonClickedSender)="finishedEditing()"></edit-food>
+    <edit-food [childSelectedFood]="selectedFood" (doneButtonClickedSender)="finishedEditing()" (deleteSender)="delete(selectedFood)"></edit-food>
     <new-food [childSelectedFood]="selectedFood" (newFoodSender)="addFood($event)"></new-food>
   </div>
   `
 })
 
 export class AppComponent {
-  currentTime = new Date;
-  month: number = this.currentTime.getMonth() + 1;
-  day: number = this.currentTime.getDate();
-  year: number = this.currentTime.getFullYear();
   selectedFood = null;
-
   masterFoodList: Food[] = [
-
   ];
+
 
   addFood(newFood: Food) {
     this.masterFoodList.push(newFood);
@@ -38,6 +33,11 @@ export class AppComponent {
   }
 
   finishedEditing() {
+    this.selectedFood = null;
+  }
+
+  delete(foodItem) {
+    this.masterFoodList.splice(this.masterFoodList.indexOf(foodItem), 1);
     this.selectedFood = null;
   }
 }

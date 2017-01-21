@@ -4,15 +4,15 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'food-list',
   template: `
-  <!-- I want to ask about this because I could not get the Materialize select js to initialize with jquery and I want to understand how that works:
+  <!-- I want to ask about this because I could not get the Materialize <select> js to initialize with jquery and I want to understand how that works:
   <select materialize="material_select" (change)="onChange($event.target.value)">
     <option value="allFoods" selected>All Foods</option>
     <option value="highCalorieFoods">High Calorie Foods</option>
     <option value="lowCalorieFoods">Low Calorie Foods</option>
   </select> -->
 
-  <div class="collection with-header">
-    <div *ngIf="childFoodList.length" class="collection-header">
+  <div *ngIf="childFoodList.length" class="collection with-header">
+    <div class="collection-header">
       <form action="#" (change)="onChange($event.target.value)">
           <input name="calorie-content" value="allFoods" type="radio" id="all"/>
           <label for="all">All Foods</label>
@@ -27,6 +27,9 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
       <div class="col s5">{{currentFood.details}}</div>
       <span class="new badge" data-badge-caption="Calories">{{currentFood.calories}}</span>
     </a>
+    <div class="collection-item row">
+      <p>Total Calories Today:<span class="new badge" data-badge-caption="Calories">{{totalCalories}}</span></p>
+    </div>
   </div>
   `
 })
@@ -35,8 +38,17 @@ export class FoodListComponent {
   @Input() childFoodList: Food[];
   @Output() clickSender = new EventEmitter();
 
+  totalCalories: number = 0;
   listItem: string = "collection-item row";
   filterByCalorieContent: string = "allFoods";
+
+
+  tallyCalories() {
+    this.childFoodList.forEach(function(foodItem) {
+      this.totalCalories = this.totalCalories + foodItem.calories;
+    });
+    return this.totalCalories;
+  }
 
   onChange(optionFromMenu) {
     this.filterByCalorieContent = optionFromMenu;
