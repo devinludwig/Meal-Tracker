@@ -15,7 +15,7 @@ var NewFoodComponent = (function () {
         this.newFoodSender = new core_1.EventEmitter();
     }
     NewFoodComponent.prototype.submitForm = function (name, details, calories) {
-        if (name !== '' && calories !== '') {
+        if (name !== '' && calories !== null) {
             var newFoodToAdd = new food_model_1.Food(name, details, calories);
             this.newFoodSender.emit(newFoodToAdd);
         }

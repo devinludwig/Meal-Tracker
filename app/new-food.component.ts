@@ -27,7 +27,7 @@ export class NewFoodComponent {
   @Output() newFoodSender = new EventEmitter();
 
   submitForm(name: string, details: string, calories: number) {
-    if (name !== '' && calories !== '') {
+    if (name !== '' && calories !== null) {
       var newFoodToAdd: Food = new Food(name, details, calories);
       this.newFoodSender.emit(newFoodToAdd);
     }
