@@ -13,12 +13,13 @@ var FoodListComponent = (function () {
     function FoodListComponent() {
         this.clickSender = new core_1.EventEmitter();
         this.totalCalories = 0;
-        this.listItem = "collection-item row";
         this.filterByCalorieContent = "allFoods";
     }
     FoodListComponent.prototype.tallyCalories = function () {
+        var _this = this;
+        this.totalCalories = 0;
         this.childFoodList.forEach(function (foodItem) {
-            this.totalCalories = this.totalCalories + foodItem.calories;
+            _this.totalCalories = _this.totalCalories + foodItem.calories;
         });
         return this.totalCalories;
     };
@@ -51,7 +52,7 @@ var FoodListComponent = (function () {
     FoodListComponent = __decorate([
         core_1.Component({
             selector: 'food-list',
-            template: "\n  <!-- I want to ask about this because I could not get the Materialize <select> js to initialize with jquery and I want to understand how that works:\n  <select materialize=\"material_select\" (change)=\"onChange($event.target.value)\">\n    <option value=\"allFoods\" selected>All Foods</option>\n    <option value=\"highCalorieFoods\">High Calorie Foods</option>\n    <option value=\"lowCalorieFoods\">Low Calorie Foods</option>\n  </select> -->\n\n  <div *ngIf=\"childFoodList.length\" class=\"collection with-header\">\n    <div class=\"collection-header\">\n      <form action=\"#\" (change)=\"onChange($event.target.value)\">\n          <input name=\"calorie-content\" value=\"allFoods\" type=\"radio\" id=\"all\"/>\n          <label for=\"all\">All Foods</label>\n          <input name=\"calorie-content\" value=\"highCalorieFoods\" type=\"radio\" id=\"high\"/>\n          <label for=\"high\">High Calorie Foods</label>\n          <input name=\"calorie-content\" value=\"lowCalorieFoods\" type=\"radio\" id=\"low\"/>\n          <label for=\"low\">Low Calorie Foods</label>\n      </form>\n    </div>\n    <a href=\"#!\" [class]=\"beingEdited(currentFood)\" (click)=\"foodHasBeenClicked(currentFood)\" *ngFor=\"let currentFood of childFoodList | calorieContent:filterByCalorieContent\">\n      <div class=\"col s5\">{{currentFood.name}}</div>\n      <div class=\"col s5\">{{currentFood.details}}</div>\n      <span class=\"new badge\" data-badge-caption=\"Calories\">{{currentFood.calories}}</span>\n    </a>\n    <div class=\"collection-item row\">\n      <p>Total Calories Today:<span class=\"new badge\" data-badge-caption=\"Calories\">{{totalCalories}}</span></p>\n    </div>\n  </div>\n  "
+            template: "\n  <div *ngIf=\"childFoodList.length\" class=\"collection with-header\">\n    <div class=\"collection-header\">\n      <form action=\"#\" (change)=\"onChange($event.target.value)\">\n          <input name=\"calorie-content\" value=\"allFoods\" type=\"radio\" id=\"all\"/>\n          <label for=\"all\">All Foods</label>\n          <input name=\"calorie-content\" value=\"highCalorieFoods\" type=\"radio\" id=\"high\"/>\n          <label for=\"high\">High Calorie Foods</label>\n          <input name=\"calorie-content\" value=\"lowCalorieFoods\" type=\"radio\" id=\"low\"/>\n          <label for=\"low\">Low Calorie Foods</label>\n      </form>\n    </div>\n    <a href=\"#!\" [class]=\"beingEdited(currentFood)\" (click)=\"foodHasBeenClicked(currentFood)\" *ngFor=\"let currentFood of childFoodList | calorieContent:filterByCalorieContent\">\n      <div class=\"col s5\">{{currentFood.name}}</div>\n      <div class=\"col s5\">{{currentFood.details}}</div>\n      <span class=\"new badge\" data-badge-caption=\"Calories\">{{currentFood.calories}}</span>\n    </a>\n    <div class=\"collection-item row\">\n      <p>Total Calories Today:<span class=\"new badge\" data-badge-caption=\"Calories\">{{tallyCalories()}}</span></p>\n    </div>\n  </div>\n  "
         }), 
         __metadata('design:paramtypes', [])
     ], FoodListComponent);
